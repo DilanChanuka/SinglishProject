@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "සිnglish Translater";
+}
+@model SinglishNew.Models.Data
+
+<form id="myForm" asp-controller="Home" asp-action="GetData" method="post">
+    <div class="text-capitalize">
+        <h1 class="display-4">සිnglish to සිංහල Translater</h1>
+
+        <div class="form-group ui-widget">
+            <textarea asp-for="SinglishTxt" class="form-control typein" rows="2"
+                      title="Type any සිnglish text here..." placeholder="සිnglish" autofocus=""
+                      autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+        </div>
+
+        <div class="form-group form-inline border-warning shrink"> 
+            
+            <div id="selector" class=" form-inline pt-3">
+                <label class="ml-2 mb-1">Convert Method: </label>
+                <select name="type" id="type" class="form-control form-control-sm ml-2 mb-1" onchange="changeType (this);">
+                    <option value="Unicode" selected>Unicode</option>
+                    <option value="Sinhala Font">Sinhala Font</option>
+                </select>
+
+                <select name="font" id="font" class="form-control form-control-sm ml-2 mb-1" onchange="changeFont (this);">
+                    <option value="FMSamantha" selected>FMSamantha</option>
+                    <option value="FMBindumathi">FMBindumathi</option>
+                    <option value="FMMalithi">FMMalithi</option>
+                    <option value="FMAbhaya">FMAbhaya</option>
+                </select>
+            </div>
+                
+            <div  id="buttonsArea" class="form-check-inline  ml-2">
+
+                <div class="custom-control custom-switch form-inline ml-2 ">
+                    <input type="checkbox" class="custom-control-input" id="customSwitches">
+                    <label class="custom-control-label" for="customSwitches">Real Time Translate</label>
+                </div>
+                <div class="form-inline ml-2" >
+                    <button type="submit" id="btnManualTranlate" class="btn btn-outline-primary ml-2">Manual Translate</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group text-capitalize textarea-container">
+            <textarea asp-for="SinhalaTxt" class="form-control" rows="2" readonly></textarea>
+            <button  id="copy_txt" class="btn-clipboard" title="" data-original-title="Copy to clipboard" onclick="copy()">Copy</button>
+        </div>        
+    </div>
+</form>
+
